@@ -1,0 +1,44 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace org.twex.poc
+
+participant User identified by pk_user_id 
+{
+    o String pk_user_id
+    o String name
+    o String email
+    o String password
+    o String created_on
+    o String last_login
+}
+
+asset Project identified by pk_project_id 
+{
+    o String pk_project_id
+    o String project_name
+    o String status 
+    --> User user_id
+}
+
+transaction ProjectAction
+{
+    o String Projectstatus
+    --> Project project
+    --> User user_id
+}
